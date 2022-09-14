@@ -1,5 +1,7 @@
 package mx.arquitectura.facade;
 
+import mx.arquitectura.chains.ITransportador;
+import mx.arquitectura.chains.Transportador;
 import mx.arquitectura.factories.*;
 
 import java.io.BufferedReader;
@@ -69,47 +71,51 @@ public class Paqueteria implements IPaqueteria{
     public Vehiculo encontrarVehiculo(String servicio, String paquete, int distancia) {
         Vehiculo vehiculo;
 
+        ITransportador iTransportador = new Transportador();
+
+        vehiculo = iTransportador.transportador(distancia, paquete, servicio);
 
 
-       if(!isExpress(servicio)){
-           if(distancia<=1 &&paquete.equalsIgnoreCase("sobre")){
-               return vehiculo = new Bicicleta();
-           }
-           if((distancia>1 && distancia<=5) && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
-               return vehiculo = new Bicicleta();
-           }
-           if(distancia>5 && ( paquete.equalsIgnoreCase("mediano"))){
-               return vehiculo = new Moto();
-           }
-           if(distancia<5 && ( paquete.equalsIgnoreCase("mediano"))){
-               return vehiculo = new Moto();
-           }
-           if(paquete.equalsIgnoreCase("grande")){
-               return vehiculo = new Carro();
-           }
-       }
 
-       if(distancia<=1 && paquete.equalsIgnoreCase("sobre")){
-           return vehiculo = new Dron();
-       }
+    //    if(!isExpress(servicio)){
+    //        if(distancia<=1 &&paquete.equalsIgnoreCase("sobre")){
+    //            return vehiculo = new Bicicleta();
+    //        }
+    //        if((distancia>1 && distancia<=5) && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
+    //            return vehiculo = new Bicicleta();
+    //        }
+    //        if(distancia>5 && ( paquete.equalsIgnoreCase("mediano"))){
+    //            return vehiculo = new Moto();
+    //        }
+    //        if(distancia<5 && ( paquete.equalsIgnoreCase("mediano"))){
+    //            return vehiculo = new Moto();
+    //        }
+    //        if(paquete.equalsIgnoreCase("grande")){
+    //            return vehiculo = new Carro();
+    //        }
+    //    }
 
-       if(distancia>1 && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
-           return vehiculo = new Moto();
-       }
+    //    if(distancia<=1 && paquete.equalsIgnoreCase("sobre")){
+    //        return vehiculo = new Dron();
+    //    }
 
-        if(distancia<=5 && (paquete.equalsIgnoreCase("mediano"))){
-            return vehiculo = new Moto();
-        }
+    //    if(distancia>1 && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
+    //        return vehiculo = new Moto();
+    //    }
 
-        if(distancia>5 && (paquete.equalsIgnoreCase("mediano"))){
-            return vehiculo = new Carro();
-        }
+    //     if(distancia<=5 && (paquete.equalsIgnoreCase("mediano"))){
+    //         return vehiculo = new Moto();
+    //     }
 
-        if( (paquete.equalsIgnoreCase("grande"))){
-            return vehiculo = new Carro();
-        }
+    //     if(distancia>5 && (paquete.equalsIgnoreCase("mediano"))){
+    //         return vehiculo = new Carro();
+    //     }
 
-        return null;
+    //     if( (paquete.equalsIgnoreCase("grande"))){
+    //         return vehiculo = new Carro();
+    //     }
+
+        return vehiculo;
     }
 
     @Override
