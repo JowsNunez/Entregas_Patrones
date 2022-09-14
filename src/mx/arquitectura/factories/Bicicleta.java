@@ -3,7 +3,7 @@ package mx.arquitectura.factories;
 public class Bicicleta implements Vehiculo{
     public final double COSTO = 5;
 
-    public final int VELOCIDAD = 12;
+    public final int VELOCIDAD = 20;
 
     public Bicicleta(){
 

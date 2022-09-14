@@ -17,7 +17,10 @@ public class Paqueteria implements IPaqueteria{
     }
 
     @Override
-    public void calcular() throws Exception {
+    public void calcular()  {
+
+        try{
+
         String Comandos[] =leer();
         String comando = Comandos[0].trim();
         String servicio = Comandos[1].trim();
@@ -45,6 +48,10 @@ public class Paqueteria implements IPaqueteria{
 
         System.out.println(pedido + ", tiempo estimado: " + tiempo(distancia, vehiculo.getVelocidad())+" minutos");
 
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+
     }
 
     @Override
@@ -62,9 +69,9 @@ public class Paqueteria implements IPaqueteria{
 
         }catch (IOException e){
             System.out.println(e.getMessage());
-        }finally {
-            return comandos;
         }
+            return comandos;
+
     }
 
     @Override
@@ -72,49 +79,7 @@ public class Paqueteria implements IPaqueteria{
         Vehiculo vehiculo;
 
         ITransportador iTransportador = new Transportador();
-
         vehiculo = iTransportador.transportador(distancia, paquete, servicio);
-
-
-
-    //    if(!isExpress(servicio)){
-    //        if(distancia<=1 &&paquete.equalsIgnoreCase("sobre")){
-    //            return vehiculo = new Bicicleta();
-    //        }
-    //        if((distancia>1 && distancia<=5) && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
-    //            return vehiculo = new Bicicleta();
-    //        }
-    //        if(distancia>5 && ( paquete.equalsIgnoreCase("mediano"))){
-    //            return vehiculo = new Moto();
-    //        }
-    //        if(distancia<5 && ( paquete.equalsIgnoreCase("mediano"))){
-    //            return vehiculo = new Moto();
-    //        }
-    //        if(paquete.equalsIgnoreCase("grande")){
-    //            return vehiculo = new Carro();
-    //        }
-    //    }
-
-    //    if(distancia<=1 && paquete.equalsIgnoreCase("sobre")){
-    //        return vehiculo = new Dron();
-    //    }
-
-    //    if(distancia>1 && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
-    //        return vehiculo = new Moto();
-    //    }
-
-    //     if(distancia<=5 && (paquete.equalsIgnoreCase("mediano"))){
-    //         return vehiculo = new Moto();
-    //     }
-
-    //     if(distancia>5 && (paquete.equalsIgnoreCase("mediano"))){
-    //         return vehiculo = new Carro();
-    //     }
-
-    //     if( (paquete.equalsIgnoreCase("grande"))){
-    //         return vehiculo = new Carro();
-    //     }
-
         return vehiculo;
     }
 
@@ -136,7 +101,7 @@ public class Paqueteria implements IPaqueteria{
             return  nPaquete = new Grande();
         }
 
-        throw new Exception("E");
+        throw new Exception("Paquete inexistente");
     }
 
     @Override
@@ -152,7 +117,7 @@ public class Paqueteria implements IPaqueteria{
 
 
 
-        throw new Exception("E");
+        throw new Exception("Servicio inexistente");
     }
 
     public double adicionalKm(int distancia){
@@ -171,7 +136,7 @@ public class Paqueteria implements IPaqueteria{
         return (int)((distancia/velocidad) * 60);
     }
 
-    public boolean isExpress(String servicio){
+    private boolean isExpress(String servicio){
         return servicio.equalsIgnoreCase("express");
     }
 

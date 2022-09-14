@@ -7,14 +7,12 @@ import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) {
 
-        try{
+
             IPaqueteria pa = new Paqueteria();
             pa.calcular();
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+
 
     }
 }

@@ -59,7 +59,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Costo del servicio: " + total
+        return "Costo del servicio: $" + total
                 + ", se entregara en " + vehiculo.toString();
     }
 }

@@ -33,16 +33,23 @@ public class HandleMoto implements ITransportador{
             if (distancia < 5 && (paquete.equalsIgnoreCase("mediano"))) {
                 return new Moto();
             }
-        }else{
-            if(distancia>1 && (paquete.equalsIgnoreCase("sobre") || paquete.equalsIgnoreCase("pequenia"))){
-                return new Moto();
-            }
-    
-            if(distancia<=5 && (paquete.equalsIgnoreCase("mediano"))){
-                return new Moto();
-            }
-
         }
+        if (servicio.equalsIgnoreCase("express")) {
+            if (distancia >= 1 && paquete.equalsIgnoreCase("sobre")) {
+                return new Moto();
+            }
+            if (distancia >= 1 && paquete.equalsIgnoreCase("pequenia")) {
+                return new Moto();
+            }
+            if (distancia >= 5 && paquete.equalsIgnoreCase("mediano")) {
+                return new Moto();
+            }
+            if (distancia <= 5 && (paquete.equalsIgnoreCase("mediano"))) {
+                return new Moto();
+            }
+        }
+        
+       
 
         if(vehiculo==null){
             next.transportador(distancia,paquete, servicio);

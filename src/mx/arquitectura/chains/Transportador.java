@@ -33,14 +33,7 @@ public class Transportador implements ITransportador {
             HandleMoto moto = new HandleMoto();
             bici.setNext(moto);
             HandleCarro carro = new HandleCarro();
-            
-
-
-            
-    
-           
-    
-    
+            moto.setNext(carro);
     
             return next.transportador(distancia,paquete, servicio);
         }

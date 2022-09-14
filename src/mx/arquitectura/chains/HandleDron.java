@@ -23,7 +23,7 @@ public class HandleDron implements  ITransportador{
     public Vehiculo transportador(int   distancia,  String  paquete,    String  servicio) {
         Vehiculo vehiculo=null;
         if(servicio.equalsIgnoreCase("express")) {
-            if (distancia > 0 && (paquete.equalsIgnoreCase("sobre"))) {
+            if ((distancia > 0 && distancia<=1)&&(paquete.equalsIgnoreCase("sobre"))) {
                 return new Dron();
             }
             if (distancia <= 1 && (paquete.equalsIgnoreCase("pequenia"))) {
