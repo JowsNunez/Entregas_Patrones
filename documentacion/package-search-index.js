@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"mx"},{"l":"mx.arquitectura.chains"},{"l":"mx.arquitectura.facade"},{"l":"mx.arquitectura.factories"}]
