@@ -24,8 +24,6 @@ public class HandleMoto implements ITransportador{
     @Override
     public Vehiculo transportador(int distancia, String paquete, String servicio) {
 
-        Vehiculo vehiculo =null;
-
         if(servicio.equalsIgnoreCase("estandar")) {
             if (distancia > 5 && (paquete.equalsIgnoreCase("mediano"))) {
                 return new Moto();
@@ -48,16 +46,6 @@ public class HandleMoto implements ITransportador{
                 return new Moto();
             }
         }
-        
-       
-
-        if(vehiculo==null){
-            next.transportador(distancia,paquete, servicio);
-        }
-        
-       
-
-
 
         return next.transportador(distancia,paquete, servicio);
     }

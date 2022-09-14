@@ -21,7 +21,6 @@ public class HandleDron implements  ITransportador{
 
     @Override
     public Vehiculo transportador(int   distancia,  String  paquete,    String  servicio) {
-        Vehiculo vehiculo=null;
         if(servicio.equalsIgnoreCase("express")) {
             if ((distancia > 0 && distancia<=1)&&(paquete.equalsIgnoreCase("sobre"))) {
                 return new Dron();
@@ -30,10 +29,6 @@ public class HandleDron implements  ITransportador{
                 return new Dron();
             }
         }
-        if(vehiculo==null){
-            next.transportador(distancia, paquete, servicio);
-        }
-
         return  next.transportador(distancia,paquete,servicio);
     }
 }

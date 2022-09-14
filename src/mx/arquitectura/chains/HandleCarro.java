@@ -22,14 +22,10 @@ public  class   HandleCarro implements  ITransportador{
 
     @Override
     public Vehiculo transportador(int   distancia,  String  paquete,    String  servicio) {
-        Vehiculo    vehiculo=null;
         if( (paquete.equalsIgnoreCase("grande"))){
-            return vehiculo = new Carro();
+            return new Carro();
         }
-        
-        if(vehiculo==null){
-            next.transportador(distancia, paquete, servicio);
-        }
+
         
         return next.transportador(distancia,paquete, servicio);
     }
