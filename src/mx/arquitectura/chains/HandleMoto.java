@@ -11,6 +11,10 @@ public class HandleMoto implements ITransportador{
             
     }
 
+    /**
+     * Establece el valor del siguiente transportador
+     * @param transportador Representa un transportador
+     */
     @Override
     public void setNext(ITransportador transportador) {
             this.next = transportador;
@@ -21,6 +25,13 @@ public class HandleMoto implements ITransportador{
         return this.next;
     }
 
+    /**
+     * Verifica los parametros para regresar una Moto si no pasa al siguiente transportador
+     * @param distancia representa la distancia del servicio
+     * @param paquete representa el tipo de paquete
+     * @param servicio representa el tipo de servicio
+     * @return
+     */
     @Override
     public Vehiculo transportador(int distancia, String paquete, String servicio) {
 

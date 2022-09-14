@@ -8,6 +8,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Clase Paqueteria que implementa la interface paqueteria
+ */
 public class Paqueteria implements IPaqueteria{
 
     private Pedido pedido;
@@ -16,6 +19,9 @@ public class Paqueteria implements IPaqueteria{
 
     }
 
+    /**
+     * calcula el total del costo del pedido
+     */
     @Override
     public void calcular()  {
 
@@ -39,7 +45,7 @@ public class Paqueteria implements IPaqueteria{
                vehiculo,
                crearPaquete(paquete));
 
-       //calcular --servicio=express --paqueteria=sobre --distancia=1
+
         double costo =pedido.getPaquete().getCosto() +
                 pedido.getServicio().getCosto() +
                 pedido.getVehiculo().getCosto() +
@@ -54,6 +60,10 @@ public class Paqueteria implements IPaqueteria{
 
     }
 
+    /**
+     * Lee los comandos en consola y devuelve un arreglo de cadenas
+     * @return
+     */
     @Override
     public String[] leer() {
 
@@ -74,20 +84,35 @@ public class Paqueteria implements IPaqueteria{
 
     }
 
+    /**
+     * Metodo que encuentra el vehiculo adecuado para el pedido.
+     * @param servicio cadena que Representa el tipo de servicio
+     * @param paquete cadena que Representa el tipo de paquete
+     * @param distancia Numero que Representa la distancia
+     * @return
+     */
     @Override
     public Vehiculo encontrarVehiculo(String servicio, String paquete, int distancia) {
         Vehiculo vehiculo;
 
+        // ser crea una instancia del manejador
         ITransportador iTransportador = new Transportador();
         vehiculo = iTransportador.transportador(distancia, paquete, servicio);
         return vehiculo;
     }
 
+    /**
+     * Metodo crea un paquete
+     * @param paquete cadena que representa un tipo de paquete
+     * @return
+     */
     @Override
     public Paquete crearPaquete(String paquete) throws Exception{
 
+        // Objeto vacio Paquete
         Paquete nPaquete;
 
+        // se verifica la cadena para devolver un tipo de paquete
         if(paquete.equalsIgnoreCase("mediano")){
             return  nPaquete = new Mediana();
         }
@@ -101,9 +126,17 @@ public class Paqueteria implements IPaqueteria{
             return  nPaquete = new Grande();
         }
 
+        // cuando no existe la cadena ingresada devuelve una Excepcion
         throw new Exception("Paquete inexistente");
     }
 
+    /**
+     * Metodo que crea un servicio
+     * @param servicio cadena que representa el tipo de servicio
+     * @param distancia numero que representa la distancia
+     * @return
+     * @throws Exception
+     */
     @Override
     public Servicio crearServicio(String servicio, int distancia) throws Exception {
         Servicio nServicio;
@@ -120,7 +153,12 @@ public class Paqueteria implements IPaqueteria{
         throw new Exception("Servicio inexistente");
     }
 
-    public double adicionalKm(int distancia){
+    /**
+     * metodo que calcula el costo adicional despues de 10 km de distancia
+     * @param distancia representa la distancia del servicio
+     * @return
+     */
+    private double adicionalKm(int distancia){
 
         if(distancia>10){
 
@@ -132,12 +170,16 @@ public class Paqueteria implements IPaqueteria{
 
     }
 
-    public int tiempo(double distancia, double velocidad){
+    /**
+     * Metodo que calcula y devuelve el tiempo estimado en minutos
+     * @param distancia representa la distancia del pedido.
+     * @param velocidad representa la velocidad del vehiculo
+     * @return
+     */
+    private int tiempo(double distancia, double velocidad){
         return (int)((distancia/velocidad) * 60);
     }
 
-    private boolean isExpress(String servicio){
-        return servicio.equalsIgnoreCase("express");
-    }
+
 
 }
